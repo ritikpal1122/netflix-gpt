@@ -1,7 +1,7 @@
 # NetflixGpt
 
    - create react app 
-   - tailwindcdd addded
+   - tailwind css addded
 
 
 
