@@ -8,16 +8,16 @@
 # feature 
 Login/signup
   - redirect to browsepage
-  -browsePage (after auth )
-    -Header
-    -mainMovie
-       -trailer background
+  - browsePage (after auth )
+    - Header
+    - mainMovie
+       - trailer background
        - title & description 
        - movieSuggetions
-         -MovieList * 
-  -NetFlixGPT
-    -searchbar
-    -movieSuggetions
+       - MovieList * 
+  - NetFlixGPT
+   - searchbar
+   - movieSuggetions
 
 
 
