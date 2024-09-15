@@ -2,6 +2,34 @@
 
    - create react app 
    - tailwind css addded
+   - Header 
+   - Routing
+   - Login Form
+   - Register Form
+   - Form Validation
+   - useRef Hook
+   - firebase Setup 
+   - hosted live
+   - create signup user acc 
+   - login user acc
+   - Created user Store With Slice 
+   - push userinfo to redux store 
+   - updateProfile 
+   - signup Display name 
+   - if user not logged in then it cant go to the next page 
+   - ubsubscribe when the comoponent unmount 
+   - add hardcoaded value to the constant fields 
+   - Register TMDB API and Create an App & get Access Token 
+   - Get Data From TMDB now playing Movie List 
+   - create hook for now playing movies 
+   - create movie slice 
+   - add movie to redux store
+   - Planning for main and Secondry container
+   - fetch data for trailer video 
+   - Update store with trailer video data 
+   - Embedded the YT Video make it autoplay 
+   - Added Tailwind classses 
+   
 
 
 
