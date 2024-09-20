@@ -7,7 +7,7 @@ const useMovieTrailer = (movieId) =>{
 
 const dispatch = useDispatch();
 
-  // fetch trailer video
+ // fetch trailer video
 
   const getMoviesVideos = async () => {
     const data = await fetch(

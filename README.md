@@ -29,7 +29,13 @@
    - Update store with trailer video data 
    - Embedded the YT Video make it autoplay 
    - Added Tailwind classses 
-   
+   - Build Secondry Component
+   - Build Movie List
+   - Build Movie Card
+   - TMDB Image URL
+   - Made The Browse Page Amazing With Css
+   - use and created customhooks for diff type for movie
+   - GPT search Feature
 
 
 
