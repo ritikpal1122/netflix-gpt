@@ -4,10 +4,6 @@ import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
   console.log("movies", movies);
-  // let posterPath = null;
-  // if (movies && movies.length > 0) {
-  //   posterPath = movies[0].poster_path;
-  // }
   return (
     <div className="px-6">
       <h1 className="text-3xl text-white py-6">{title}</h1>
