@@ -36,6 +36,11 @@
    - Made The Browse Page Amazing With Css
    - use and created customhooks for diff type for movie
    - GPT search Feature
+   - GPT Search Bar
+   - GPT Search Page
+   - Multi-language Feature in our APP
+   - Integrate the GPT API's
+
 
 
 

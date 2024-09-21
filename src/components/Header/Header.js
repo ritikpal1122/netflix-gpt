@@ -4,71 +4,78 @@ import { auth } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser, setUser } from '../../utils/userSlice';
-import { LOGO } from '../../utils/constant';
+import { LOGO, SUPORTED_LANGUAGES } from '../../utils/constant';
 import { toggleGptSearchView } from '../../utils/gptSlice';
+import { changeLanguage } from '../../utils/configSlice';
 
 const Header = () => {
-  const navigate = useNavigate();
-  const dispatch  = useDispatch()
-  const user = useSelector((store) => store.user)
-  console.log(user);
-  const handleSignOut = ()=>{
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      dispatch(removeUser())
-      navigate('/')
-    }).catch((error) => {
-      navigate("/error")
-      // An error happened.
-    });
-  }
-  useEffect(() => {
-  const unsubscribe =   onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, email, displayName, photoURL } = auth.currentUser;
-        // here will update the store
-        dispatch(
-          setUser({
-            uid: uid,
-            email: email,
-            displayName: displayName,
-            photoURL:photoURL,
-          })
-        );
-      navigate("/browse")  // when user logged in navigate to browse Page
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const  user = useSelector(store => store.user);
+  const showgptsearch = useSelector(store => store.gpt.showGPTSearch);
+  const handleSignOut = () =>{
+          signOut(auth).then(() => {
+              navigate("/");
+            }).catch((error) => {
+                navigate("/error");
+            });
+  };
+
+  useEffect(()=>{
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid, email, displayName, photoURL} = user;
+        dispatch(setUser({
+          uid: uid, 
+          email:email, 
+          displayName: displayName, 
+          photoURL: photoURL
+        }));
+        navigate("/browse");
       } else {
-        // User is signed out
-        dispatch(removeUser);
-        navigate("/")
+        dispatch(removeUser());
+        navigate("/");
       }
-    });
-    // unsubscribe function 
+    });  
+
+
+    //unsubscsribe when component unmounts
     return () => unsubscribe();
   }, []);
 
-  const handleGPTSearch = ()=>{
-    //togle functionality
-    dispatch(toggleGptSearchView())
-
+  const handleGptSearchClick = ()=>{
+    // Toggle GPT Search
+    dispatch(toggleGptSearchView());
   }
+
+  const handleLangugageChange = (e)=>{
+
+    dispatch(changeLanguage(e.target.value));
+  }
+
+
   return (
-    <div className='absolute px-8 w-screen bg-gradient-to-b from-black z-50 flex items-center justify-between'> 
-      <img className='w-44' src={LOGO} alt='logo' />
-    {user ? (
-    <div className='flex items-center mr-2'>
-     <button className='py-2 px-4 m-2 bg-purple-800 rounded-lg text-white font-bold' onClick={handleGPTSearch}>GPT Search</button>
-      <img className='w-12 h-12 rounded-full' alt='icon' src={user.photoURL} />
-      <button onClick={handleSignOut} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 ms-3 rounded-lg px-3'>
-        Sign Out
-      </button>
+    <div className= "absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between ">
+        <img 
+            className="w-44 mx-auto md:mx-0"
+            src= {LOGO}
+            alt= "logo"
+        />
+        {user && <div className='justify-between flex p-2'>
+            {showgptsearch && <select className="p-2 m-2 bg-gray-800 text-white" onChange={handleLangugageChange}>
+              {SUPORTED_LANGUAGES.map(lang => <option key = {lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+            </select>}
+            <button className= "py-2 px-4 mx-4 my-2 bg-blue-800 rounded-lg text-white" onClick={handleGptSearchClick}>{showgptsearch? "HomePage":"GPT Search"}</button>
+            <img
+              className='hidden md:inline-block w-12 h-12'
+              alt = "usericon"
+              src = {user.photoURL}
+            />
+            <button onClick = {handleSignOut} className='font-bold text-white'>(Sign Out)</button>
+        </div>}
     </div>
-  ) : (
-    null
-  )}
-    </div>
-    
-  );
+  )
 }
 
-export default Header;
+export default Header

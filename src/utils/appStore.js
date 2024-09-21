@@ -3,12 +3,15 @@ import userReducer from "./userSlice";
 import moviesReducer from "./moviesSlice";
 import GptSearch from "../components/GptSearch";
 import gptReducer from './gptSlice'
+import configReducer from "../utils/configSlice";
+
 
 const appStore = configureStore({
   reducer: {
     user: userReducer,
     movies: moviesReducer,
-    gpt: gptReducer
+    gpt: gptReducer,
+    config: configReducer,
   },
 });
 export default appStore;
