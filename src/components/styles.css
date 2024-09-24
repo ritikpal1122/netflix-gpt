@@ -1,0 +1,28 @@
+/* styles.css */
+.SecondryContainer {
+    /* default styles for large screens */
+   
+  }
+  
+  /* medium screen size (e.g., tablets) */
+  @media (max-width: 768px) {
+    .SecondryContainer {
+      flex-direction: column;
+    }
+    .MovieList {
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* small screen size (e.g., mobile phones) */
+  @media (max-width: 480px) {
+    .SecondryContainer {
+      flex-direction: column;
+    }
+    .MovieList {
+      margin-bottom: 10px;
+    }
+    .MovieList title {
+      font-size: 16px;
+    }
+  }

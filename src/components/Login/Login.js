@@ -102,19 +102,20 @@ const Login = () => {
   };
 
   return (
-    <div className="overflow-x-hidden h-screen">
+    <div className="overflow-x-hidden h-screen relative ">
       <Header />
-      <div className="absolute">
+      <div className="absolute bgx-image h-full inset-0 w-full overflow-hidden">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/04bef84d-51f6-401e-9b8e-4a521cbce3c5/null/IN-en-20240903-TRIFECTA-perspective_0d3aac9c-578f-4e3c-8aa8-bbf4a392269b_large.jpg"
           alt="bg-image"
+          className="w-full h-full object-cover" 
         />
       </div>
 
       <form
-        className={`absolute bg-black w-3/12 p-12 my-36 mx-auto right-0 left-0 text-white bg-opacity-70 rounded-lg ${
-          isSignup ? "signup-form" : "login-form"
-        } overflow-hidden`}
+        className={`absolute bg-black w-full max-w-sm md:max-w-md p-8 md:p-12 mt-20 mx-auto right-0 left-0 text-white bg-opacity-70 rounded-lg ${
+      isSignup ? "signup-form" : "login-form"
+    }`}
       >
         <h1 className="font-bold text-3xl py-4">
           {isSignup ? "Sign Up" : "Sign In"}
